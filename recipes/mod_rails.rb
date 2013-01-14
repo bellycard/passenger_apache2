@@ -22,8 +22,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe "passenger_apache2"
-
 # Allows proper default path if root path was overridden
 node.default[:passenger][:module_path] = "#{node[:passenger][:root_path]}/ext/apache2/mod_passenger.so"
 
@@ -44,4 +42,6 @@ template "#{node[:apache][:dir]}/mods-available/passenger.conf" do
   group "root"
   mode "644"
 end
+
+include_recipe "passenger_apache2"
 
